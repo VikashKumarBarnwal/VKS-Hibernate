@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-mapping>
+    <class name="com.garg.model.Customer" table="customer">
+        <id name="id" type="int" column="custid" >
+            <generator class="com.garg.pk.KeyGeneration"/>
+        </id>
+        <property name="customerName" not-null="true" >
+            <column name="customerName" />
+        </property>
+        <property name="email">
+            <column name="email"/>
+        </property>
+        <property name="city">
+            <column name="city"/>
+        </property>
+        <property name="mobile">
+            <column name="mobile"/>
+        </property>
+        
+        <property name="password">
+            <column name="password"/>
+        </property>
+    </class>
+</hibernate-mapping>

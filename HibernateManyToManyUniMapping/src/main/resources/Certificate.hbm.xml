@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-mapping>
+    <class name="com.garg.model.Certificate" table = "CERTIFICATE">
+         
+      <id name = "id" type = "int" column = "id">
+         <generator class="native"/>
+      </id>
+      
+      <property name = "name" column = "certificate_name" type = "string"/>
+      
+        <set name = "employees" cascade="all" table="EMP_CERT">
+         <key column ="certificate_id"/>
+         <many-to-many column = "employee_id" class="com.garg.model.Employee"/>
+      </set>
+    </class>
+</hibernate-mapping>

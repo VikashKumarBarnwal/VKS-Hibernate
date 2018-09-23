@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ -->	
+ <!DOCTYPE hibernate-mapping PUBLIC  
+          "-//Hibernate/Hibernate Mapping DTD 5.3//EN"  
+          "http://hibernate.sourceforge.net/hibernate-mapping-5.3.dtd">  
+<hibernate-mapping>
+    <class name="com.garg.model.Account" table = "ACCOUNT1" >
+         
+      <id name = "accId" type = "int" column = "acc_id" >
+         <generator class="increment"/>
+      </id>
+       <discriminator column="acc_type" type="string"/>
+     <property name = "accNumber" column = "acc_number" />
+     <property name = "accountHolder" column = "account_holder" />
+     <property name = "openDate" column = "openDate" type="date" />
+       
+      
+        
+       
+     <subclass name="com.garg.model.SavingAccount"  discriminator-value="sa_acc" >
+      <!--  <key  column="sa_acc_id"  /> -->
+       <property name = "minBal" column = "min_bal"  type = "int"/>
+        <property name = "compoundIntr" column = "compound_intr"  type = "int"/>
+     </subclass>
+     
+      <subclass name="com.garg.model.CurrentAccount"  discriminator-value="ca_acc"  >
+      <!--   <key  column="ca_acc_id"  /> -->
+       <property name = "maxWithDrowLimit" column = "min_withdrow"  type = "int"/>
+        <property name = "simpleIntr" column = "simple_intr"  type = "int"/>
+     </subclass>
+    </class>
+</hibernate-mapping>
